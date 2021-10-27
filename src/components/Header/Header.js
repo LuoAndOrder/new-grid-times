@@ -81,7 +81,7 @@ const ActionGroup = styled.div`
 
 const MainHeader = styled(MaxWidthWrapper)`
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: 1fr auto 1fr;
   grid-template-areas: 'nav logo login';
   align-items: center;
   margin-top: 32px;
