@@ -56,7 +56,7 @@ const SuperHeader = styled.div`
   color: white;
 
   /* Hide the super header on desktop variants */
-  @media ${QUERIES.desktopAndUp} {
+  @media ${QUERIES.laptopAndUp} {
     display: none;
   }
 `;
@@ -87,7 +87,7 @@ const MainHeader = styled(MaxWidthWrapper)`
   margin-top: 32px;
   margin-bottom: 48px;
 
-  @media ${QUERIES.desktopAndUp} {
+  @media ${QUERIES.laptopAndUp} {
     margin-top: 16px;
     margin-bottom: 81px;
     height: 100%;
@@ -98,7 +98,7 @@ const DesktopNavWrapper = styled.div`
   grid-area: nav;
   display: none;
 
-  @media ${QUERIES.desktopAndUp} {
+  @media ${QUERIES.laptopAndUp} {
     display: revert;
   }
 `;
@@ -106,7 +106,7 @@ const DesktopNavWrapper = styled.div`
 const LogoWrapper = styled.div`
   grid-area: logo;
 
-  @media ${QUERIES.desktopAndUp} {
+  @media ${QUERIES.laptopAndUp} {
     margin-top: -8px;
   }
 `;
@@ -117,7 +117,7 @@ const DesktopLoginWrapper = styled.div`
   justify-self: end;
   align-self: end;
 
-  @media ${QUERIES.desktopAndUp} {
+  @media ${QUERIES.laptopAndUp} {
     display: flex;
     flex-direction: column;
     justify-content: center;
