@@ -8,19 +8,25 @@ import MaxWidthWrapper from '../MaxWidthWrapper';
 import Logo from '../Logo';
 import Button from '../Button';
 
+const NavIcons = () => {
+  return (
+    <ActionGroup>
+      <button>
+        <Search size={24} />
+      </button>
+      <button>
+        <Menu size={24} />
+      </button>
+    </ActionGroup>
+  );
+}
+
 const Header = () => {
   return (
     <header>
       <SuperHeader>
         <Row>
-          <ActionGroup>
-            <button>
-              <Search size={24} />
-            </button>
-            <button>
-              <Menu size={24} />
-            </button>
-          </ActionGroup>
+          <NavIcons />
           <ActionGroup>
             <button>
               <User size={24} />
@@ -29,7 +35,16 @@ const Header = () => {
         </Row>
       </SuperHeader>
       <MainHeader>
-        <Logo />
+        <DesktopNavWrapper>
+          <NavIcons />
+        </DesktopNavWrapper>
+        <LogoWrapper>
+          <Logo />
+        </LogoWrapper>
+        <DesktopLoginWrapper>
+          <Button>Subscribe</Button>
+          <a href="#">Already a subscriber?</a>
+        </DesktopLoginWrapper>
       </MainHeader>
     </header>
   );
@@ -39,6 +54,11 @@ const SuperHeader = styled.div`
   padding: 16px 0;
   background: var(--color-gray-900);
   color: white;
+
+  /* Hide the super header on desktop variants */
+  @media ${QUERIES.desktopAndUp} {
+    display: none;
+  }
 `;
 
 const Row = styled(MaxWidthWrapper)`
@@ -60,11 +80,57 @@ const ActionGroup = styled.div`
 `;
 
 const MainHeader = styled(MaxWidthWrapper)`
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas: 'nav logo login';
   align-items: center;
-  justify-content: center;
   margin-top: 32px;
   margin-bottom: 48px;
+
+  @media ${QUERIES.desktopAndUp} {
+    margin-top: 16px;
+    margin-bottom: 81px;
+    height: 100%;
+  }
+`;
+
+const DesktopNavWrapper = styled.div`
+  grid-area: nav;
+  display: none;
+
+  @media ${QUERIES.desktopAndUp} {
+    display: revert;
+  }
+`;
+
+const LogoWrapper = styled.div`
+  grid-area: logo;
+
+  @media ${QUERIES.desktopAndUp} {
+    margin-top: -8px;
+  }
+`;
+
+const DesktopLoginWrapper = styled.div`
+  grid-area: login;
+  display: none;
+  justify-self: end;
+  align-self: end;
+
+  @media ${QUERIES.desktopAndUp} {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  & > a {
+    color: var(--color-gray-900);
+    text-decoration: underline;
+    font-family: var(--font-family-serif);
+    font-size: ${14 / 16}rem;
+    font-style: italic;
+  }
 `;
 
 export default Header;
