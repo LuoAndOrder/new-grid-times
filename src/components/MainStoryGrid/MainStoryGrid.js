@@ -13,6 +13,8 @@ import SecondaryStory from '../SecondaryStory';
 import OpinionStory from '../OpinionStory';
 import Advertisement from '../Advertisement';
 
+import { QUERIES } from '../../constants';
+
 const MainStoryGrid = () => {
   return (
     <Wrapper>
@@ -74,6 +76,17 @@ const StoryList = styled.div`
 
   & > *:not(:first-child) {
     padding-top: 16px;
+  }
+
+  @media ${QUERIES.tabletOnly} {
+    & > *:not(:last-child) {
+      padding-bottom: revert;
+      border-bottom: revert;
+    }
+
+    & > *:not(:first-child) {
+      padding-top: revert;
+    }
   }
 `;
 
