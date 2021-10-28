@@ -6,10 +6,10 @@ const OpinionStory = ({ id, title, author, avatar }) => {
     <a href={`/story/${id}`}>
       <Wrapper>
         <Avatar alt="" src={avatar} />
-        <div>
+        <OpinionMetaWrapper>
           <AuthorName>{author}</AuthorName>
           <ArticleTitle>{title}</ArticleTitle>
-        </div>
+        </OpinionMetaWrapper>
       </Wrapper>
     </a>
   );
@@ -17,6 +17,9 @@ const OpinionStory = ({ id, title, author, avatar }) => {
 
 const Wrapper = styled.article`
   color: var(--color-gray-900);
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
 `;
 
 const Avatar = styled.img`
@@ -25,6 +28,10 @@ const Avatar = styled.img`
   height: 48px;
   border-radius: 50%;
   object-fit: cover;
+`;
+
+const OpinionMetaWrapper = styled.div`
+  flex: 1;
 `;
 
 const AuthorName = styled.p`
