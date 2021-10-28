@@ -87,10 +87,14 @@ const MainHeader = styled(MaxWidthWrapper)`
   margin-top: 32px;
   margin-bottom: 48px;
 
+  @media ${QUERIES.tabletAndUp} {
+    margin-top: 48px;
+    margin-bottom: 72px;
+  }
+
   @media ${QUERIES.laptopAndUp} {
     margin-top: 16px;
-    margin-bottom: 81px;
-    height: 100%;
+    margin-bottom: 72px;
   }
 `;
 
@@ -115,13 +119,12 @@ const DesktopLoginWrapper = styled.div`
   grid-area: login;
   display: none;
   justify-self: end;
-  align-self: end;
+  align-self: center;
 
   @media ${QUERIES.laptopAndUp} {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    display: revert;
+    position: relative;
+    gap: 8px;
   }
 
   & > a {
@@ -130,6 +133,11 @@ const DesktopLoginWrapper = styled.div`
     font-family: var(--font-family-serif);
     font-size: ${14 / 16}rem;
     font-style: italic;
+
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    margin-top: 8px;
   }
 `;
 
