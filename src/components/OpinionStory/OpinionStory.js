@@ -32,6 +32,7 @@ const Avatar = styled.img`
   @media ${QUERIES.tabletOnly} {
     float: revert;
     margin-left: revert;
+    margin-bottom: 8px;
   }
 `;
 

@@ -1,21 +1,30 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
-const SecondaryStory = ({ id, title, image, location, abstract }) => {
+const SecondaryStory = ({ id, title, image, location, abstract, variant = 'horizontal' }) => {
+  let WrapperComponent;
+  if (variant === 'horizontal') {
+    WrapperComponent = HorizontalWrapper;
+  } else if (variant === 'vertical') {
+    WrapperComponent = VerticalWrapper;
+  } else {
+    throw new Error(`Invalid variant ${variant}`);
+  }
+  
   return (
     <a href={`/story/${id}`}>
-      <Wrapper>
+      <WrapperComponent>
         <Image alt={image.alt} src={image.src} />
         <Heading>{title}</Heading>
         <AbstractWrapper>
           <Abstract>{abstract}</Abstract>
         </AbstractWrapper>
-      </Wrapper>
+      </WrapperComponent>
     </a>
   );
 };
 
-const Wrapper = styled.article`
+const HorizontalWrapper = styled.article`
   display: grid;
   grid-template-areas:
     'image heading'
@@ -23,6 +32,15 @@ const Wrapper = styled.article`
   gap: 4px 16px;
   grid-template-columns: 120px 1fr;
   color: var(--color-gray-900);
+`;
+
+const VerticalWrapper = styled(HorizontalWrapper)`
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    'image'
+    'heading'
+    'abstract';
+  gap: 8px;
 `;
 
 const Image = styled.img`
